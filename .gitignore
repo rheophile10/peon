@@ -1,0 +1,6 @@
+requirements.txt
+.vscode
+.venv
+__pycache__/
+.env
+notes.md
