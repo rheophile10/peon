@@ -1,0 +1,10 @@
+# ids are placeholders only. they have to be unique to the task. 
+tasks:
+  - id: example
+    name: peon.routines.enqueue_routine
+    data:
+      routine_name: example
+    device: cpu
+    run_at: null
+    frequency: 5
+    predecessors: [] 

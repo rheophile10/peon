@@ -3,24 +3,27 @@
 ## Run the Worker
 
 ```bash
-# Basic CPU worker (most common)
-python -m peon --device cpu
+# 1. Default: just run a CPU worker (no pinning)
+python -m peon
 
-# GPU worker (for heavy tasks)
-python -m peon --device gpu
+# 2. Run worker pinned to specific core (e.g. core 5)
+python -m peon work --cpu-core 5
 
-# Update extra dependencies first, then run
-python -m peon --update-env --device cpu
+# 3. Pin to core 42 on an 8-core machine → becomes core 2 (42 % 8)
+python -m peon work --cpu-core 42
 
-# Run forever with faster polling
-python -m peon --device cpu --poll 0.5
+# 4. Auto-pin to arbitrary core (good for launching many workers)
+python -m peon work --pin-cpu
 
-# Run for only 10 minutes
-python -m peon --device gpu --runtime 600
+# 5. Run on GPU (if available)
+python -m peon work --device gpu
 
-# Custom worker name (helpful when running multiple)
-python -m peon --name gold-miner-01 --device cpu
+# 6. Custom host/port and name
+python -m peon work --host 192.168.1.100 --port 9000 --name builder
 
-# Override API location
-python -m peon --host 192.168.1.100 --port 9000 --device cpu
+# 7. Enqueue a routine called "backup_database"
+python -m peon enqueue backup_database
+
+# 8. Dump all current tasks to tasks_dump.csv
+python -m peon dump-tasks
 ```

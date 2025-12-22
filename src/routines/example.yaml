@@ -1,0 +1,30 @@
+# ids are placeholders only. they have to be unique to the task. 
+tasks:
+  - id: add
+    name: peon.example_func
+    data:
+      a: 1
+      b: 2
+    device: cpu
+    run_at: null
+    frequency: null
+    predecessors: []
+
+  - id: print
+    name: peon.example_func2
+    data:
+      c: "Result printed"
+    device: cpu
+    run_at: null
+    frequency: null
+    predecessors:
+      - add
+
+  - id: dump
+    name: peon.routines.dump_tasks_cmd
+    data: null
+    device: cpu
+    run_at: null
+    frequency: null
+    predecessors:
+      - print

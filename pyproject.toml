@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "zug zug"
 requires-python = ">=3.12"
 
-dependencies = ["requests", "python-dotenv"]
+dependencies = ["python-dotenv", "pyyaml", "psutil", "aiohttp"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
